@@ -64,7 +64,7 @@ object OpenGLUtils {
     fun readRawTextFile(context: Context?, rawId: Int): String {
         val `is` = context?.resources?.openRawResource(rawId)
         val br = BufferedReader(InputStreamReader(`is`))
-        var line: String
+        var line: String ?= null
         val sb = StringBuilder()
         try {
             while (true) {
@@ -77,11 +77,12 @@ object OpenGLUtils {
             }
         } catch (e: Exception) {
             e.printStackTrace()
-        }
-        try {
-            br.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
+        } finally {
+            try {
+                br.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
         return sb.toString()
     }

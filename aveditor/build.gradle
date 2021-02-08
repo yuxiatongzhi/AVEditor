@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 
 android {
@@ -58,7 +58,7 @@ android {
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
-publish {
+/*publish {
     //bintray.com 用户名
     userOrg = 'yangkun19921001'
     // bintray 上仓库的名字
@@ -73,7 +73,7 @@ publish {
     desc = '这是一款短视频编辑 SDK，仿 DouYin 音视频处理。功能包含有美颜、滤镜、贴纸、特效、录制、分段录制、速率录制、变声、配乐、rtmp 直播推流、图片转视频、剪辑等功能。'
     //一般填 github 项目地址,一定是要有效的地址
     website = 'https://github.com/yangkun19921001/AVEditor'
-}
+}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

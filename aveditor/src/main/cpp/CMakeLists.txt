@@ -13,7 +13,7 @@ set(SOUNDTOUCH_PATH ${CMAKE_SOURCE_DIR}/soundtouch)
 
 # 其它动态库路径
 # 动态库 路径
-set(SHARED_PATH ${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI})
+set(SHARED_PATH ${CMAKE_SOURCE_DIR}/../../../../thirdparties/prebuild/${CMAKE_ANDROID_ARCH_ABI})
 # librtmp 静态库 路径
 set(LIBRTMP_STATIC_PATH ${CMAKE_SOURCE_DIR}/../../../../thirdparties/librtmp/libs/${CMAKE_ANDROID_ARCH_ABI})
 
@@ -132,6 +132,9 @@ set_target_properties(swresample PROPERTIES IMPORTED_LOCATION ${SHARED_PATH}/lib
 add_library(filter SHARED IMPORTED)
 set_target_properties(filter PROPERTIES IMPORTED_LOCATION ${SHARED_PATH}/libavfilter.so)
 
+add_library(avdevice SHARED IMPORTED)
+set_target_properties(avdevice PROPERTIES IMPORTED_LOCATION ${SHARED_PATH}/libavdevice.so)
+
 
 add_library(marsxlog SHARED IMPORTED)
 set_target_properties(marsxlog PROPERTIES IMPORTED_LOCATION ${SHARED_PATH}/libmarsxlog.so)
@@ -179,9 +182,11 @@ target_link_libraries(
         OpenSLES
         avcodec
         avformat
+        swscale
         swresample
         avutil
         filter
+        avdevice
         z
         android
         marsxlog
